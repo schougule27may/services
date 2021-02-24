@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "1f860567-31ea-4051-815e-324dfd38c685",
+		"name": "learning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiURL}}//hello",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current system date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiURL}}/currentdate",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"currentdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get dummy students xml",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiURL}}/students",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get dummy students json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiURL}}/students",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"a\": \"100\",\n    \"b\": \"100\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/calculator/add",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"calculator",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"a\": \"100\",\n    \"b\": \"100\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/calculator/add",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"calculator",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
