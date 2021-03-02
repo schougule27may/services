@@ -6,10 +6,7 @@ import com.sample.calculator.calculator.dto.Student;
 import com.sample.calculator.calculator.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -46,4 +43,11 @@ public class HelloWorldController {
     public ResponseMathPayload performAdd(@RequestBody RequestMathPayload requestMathPayload){
         return studentService.peformSum(requestMathPayload);
     }
+
+
+    @RequestMapping(value = "/{text:[a-z-]+}.{number:[\\d]+}")
+    public String hi(@PathVariable String text, @PathVariable String number){
+        return  "aa";
+    }
+
 }
