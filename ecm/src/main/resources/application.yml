@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: DemoApp
+  h2:
+    console:
+      enabled: true
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:ecm
+
+
+server:
+  port: 7979
+
+
+
