@@ -3,3 +3,5 @@ insert into userdata (id, username) values(2, 'Test');
 insert into userdata (id, username) values(3, 'Neha');
 insert into userdata (id, username) values(4, 'Vinay');
 
+insert into BOOKS  values(1, 'XYZ', 'abc', 100);
+
