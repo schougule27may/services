@@ -1,10 +1,13 @@
 package com.itline24.ecm.controller;
 
 import com.itline24.ecm.entity.Books;
+import com.itline24.ecm.entity.ClientEntity;
+import com.itline24.ecm.repositories.ClientRepository;
 import com.itline24.ecm.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //Mark class as Controller
@@ -15,6 +18,9 @@ public class BooksController {
     //Autowire the bookService Class
     @Autowired
     BooksService booksService;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     @GetMapping("/book")
     private List<Books> getAllBooks() {
@@ -44,6 +50,15 @@ public class BooksController {
     private Books update(@RequestBody Books books) {
         booksService.saveOrUpdate(books);
         return books;
+    }
+
+    @GetMapping("/clients")
+    private List<ClientEntity> getaa() {
+
+        List<ClientEntity> clientEntities1 = new ArrayList<>();
+        clientRepository.findAll().forEach(books1 -> clientEntities1.add(books1
+        ));
+        return clientEntities1;
     }
 
 }
