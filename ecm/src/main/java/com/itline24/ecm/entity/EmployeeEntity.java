@@ -22,8 +22,6 @@ public class EmployeeEntity {
     private String shortDesc;
     private String keyTechStack;
     private String autoExp;
-    private Collection<EmployeeResumeEntity> employeeResumesByEmployeeId;
-    private Collection<TimeSheetEntity> timeSheetsByEmployeeId;
 
     @Id
     @Column(name = "employee_Id")
@@ -223,21 +221,5 @@ public class EmployeeEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "employeeByEmployeeId")
-    public Collection<EmployeeResumeEntity> getEmployeeResumesByEmployeeId() {
-        return employeeResumesByEmployeeId;
-    }
 
-    public void setEmployeeResumesByEmployeeId(Collection<EmployeeResumeEntity> employeeResumesByEmployeeId) {
-        this.employeeResumesByEmployeeId = employeeResumesByEmployeeId;
-    }
-
-    @OneToMany(mappedBy = "employeeByEmployeeId")
-    public Collection<TimeSheetEntity> getTimeSheetsByEmployeeId() {
-        return timeSheetsByEmployeeId;
-    }
-
-    public void setTimeSheetsByEmployeeId(Collection<TimeSheetEntity> timeSheetsByEmployeeId) {
-        this.timeSheetsByEmployeeId = timeSheetsByEmployeeId;
-    }
 }
