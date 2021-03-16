@@ -11,7 +11,7 @@ public class ClientEntity {
     private String emailAddress;
     private String firstName;
     private String lastName;
-    private Byte active;
+    private Boolean active;
     private Integer countryCode;
     private Integer mobile;
     private Timestamp createTime;
@@ -65,11 +65,11 @@ public class ClientEntity {
 
     @Basic
     @Column(name = "active")
-    public Byte getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(Byte active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

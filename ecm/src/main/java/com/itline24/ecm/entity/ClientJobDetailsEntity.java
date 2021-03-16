@@ -79,7 +79,7 @@ public class ClientJobDetailsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "client_Id")
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     public ClientEntity getClientByClientId() {
         return clientByClientId;
     }

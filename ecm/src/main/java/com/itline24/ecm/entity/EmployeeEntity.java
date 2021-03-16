@@ -1,27 +1,38 @@
 package com.itline24.ecm.entity;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.experimental.Tolerate;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
 @Table(name = "employee", schema = "ecm_test", catalog = "")
+@Builder
+@Data
 public class EmployeeEntity {
     private int employeeId;
     private String emailAddress;
     private String firstName;
     private String lastName;
-    private Byte active;
+    private Boolean active;
     private Integer countryCode;
     private Integer mobile;
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
     private String address;
     private String nickName;
-    private Byte status;
+    private Boolean status;
     private String shortDesc;
     private String keyTechStack;
     private String autoExp;
+
+    @Tolerate
+    public EmployeeEntity(){
+
+    }
 
     @Id
     @Column(name = "employee_Id")
@@ -65,11 +76,11 @@ public class EmployeeEntity {
 
     @Basic
     @Column(name = "active")
-    public Byte getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(Byte active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
@@ -136,11 +147,11 @@ public class EmployeeEntity {
 
     @Basic
     @Column(name = "status")
-    public Byte getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
