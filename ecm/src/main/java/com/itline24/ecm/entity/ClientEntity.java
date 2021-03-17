@@ -19,9 +19,6 @@ public class ClientEntity {
     private String address;
     private String nickName;
     private String type;
-    private Collection<ClientJobDetailsEntity> clientJobDetailsByClientId;
-    private Collection<ClientWorkTimingEntity> clientWorkTimingsByClientId;
-    private Collection<TimeSheetEntity> timeSheetsByClientId;
 
     @Id
     @Column(name = "client_Id")
@@ -184,30 +181,5 @@ public class ClientEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "clientByClientId")
-    public Collection<ClientJobDetailsEntity> getClientJobDetailsByClientId() {
-        return clientJobDetailsByClientId;
-    }
 
-    public void setClientJobDetailsByClientId(Collection<ClientJobDetailsEntity> clientJobDetailsByClientId) {
-        this.clientJobDetailsByClientId = clientJobDetailsByClientId;
-    }
-
-    @OneToMany(mappedBy = "clientByClientId")
-    public Collection<ClientWorkTimingEntity> getClientWorkTimingsByClientId() {
-        return clientWorkTimingsByClientId;
-    }
-
-    public void setClientWorkTimingsByClientId(Collection<ClientWorkTimingEntity> clientWorkTimingsByClientId) {
-        this.clientWorkTimingsByClientId = clientWorkTimingsByClientId;
-    }
-
-    @OneToMany(mappedBy = "clientByClientId")
-    public Collection<TimeSheetEntity> getTimeSheetsByClientId() {
-        return timeSheetsByClientId;
-    }
-
-    public void setTimeSheetsByClientId(Collection<TimeSheetEntity> timeSheetsByClientId) {
-        this.timeSheetsByClientId = timeSheetsByClientId;
-    }
 }

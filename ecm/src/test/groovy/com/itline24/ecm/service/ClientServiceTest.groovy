@@ -59,14 +59,85 @@ class ClientServiceTest extends Specification {
         ClientJobDetailsEntity clientJobDetailsEntity = new ClientJobDetailsEntity();
         clientJobDetailsEntity.setJobDetailId(1);
         clientJobDetailsEntity.setProjectDetails("JAVA , Spring boot along with angular");
+        List<ClientJobDetailsEntity> clientJobDetailsEntities = new ArrayList<>();
+        clientJobDetailsEntities.add(clientJobDetailsEntity);
         when :
-        ClientJobDetailsDto clientJobDetailsDto  = clientService.getClientJobDetails(clientId);
+        List<ClientJobDetailsDto> clientJobDetails  = clientService.getClientJobDetails(clientId);
 
         then :
-        1 * clientJobDetailsRepository.findByClientByClientId_ClientId(clientId) >> clientJobDetailsEntity
-        clientJobDetailsDto != null;
-        clientJobDetailsDto.getProjectDetails() == 'JAVA , Spring boot along with angular'
-        clientJobDetailsDto.getJobDetailId() == 1
-        println clientJobDetailsDto
+        1 * clientJobDetailsRepository.findByClientByClientId_ClientId(clientId) >> clientJobDetailsEntities
+        clientJobDetails != null;
+        clientJobDetails.get(0).getProjectDetails() == 'JAVA , Spring boot along with angular'
+        clientJobDetails.get(0).getJobDetailId() == 1
+        println clientJobDetails
     }
+
+    def "Add a new client" () {
+        given:
+        ClientDto clientDto = ClientDto.builder()
+                .emailAddress("abc@abc.com")
+                .firstName("firstName")
+                .lastName("lastName")
+                .active(true)
+                .countryCode(1)
+                .mobile(1234567890)
+                .address("XYZ Street")
+                .nickName("Smith")
+                .type("active")
+                .build();
+
+        when:
+        clientService.client(clientDto);
+
+        then:
+        1 * clientRepository.save(_)
+
+    }
+
+
+    def "Update a exisiting client" () {
+        given:
+        ClientDto clientDto = ClientDto.builder()
+                 .clientId(1)
+                .emailAddress("xyz@abc.com")
+                .firstName("firstName")
+                .lastName("lastName")
+                .active(true)
+                .countryCode(1)
+                .mobile(1234567890)
+                .address("XYZ Street")
+                .nickName("Smith")
+                .type("active")
+                .build();
+        ClientEntity clientEntity = new ClientEntity();
+
+        when:
+        clientService.client(clientDto);
+
+        then:
+        1 * clientRepository.findByClientId(_) >> clientEntity
+        1 * clientRepository.save(_)
+        clientEntity.getEmailAddress() == 'xyz@abc.com'
+
+    }
+
+    def "Add client job details" () {
+        given :
+
+        ClientJobDetailsDto clientJobDetailsDto  =  ClientJobDetailsDto.builder()
+                .clientId(1)
+                .projectDetails("JAVA spring boot")
+                .build();
+
+        ClientEntity clientEntity = new ClientEntity();
+        clientEntity.setClientId(1);
+        when :
+        clientService.clientJobDetails(clientJobDetailsDto);
+
+        then :
+        1 * clientRepository.findByClientId(_) >> clientEntity
+        1 * clientJobDetailsRepository.save(_)
+
+    }
+
 }

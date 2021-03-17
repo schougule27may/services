@@ -14,7 +14,7 @@ public class ClientJobDetailsDto {
     private String projectDetails;
     private Timestamp createTime;
     private Timestamp lastUpdateTime;
-    private ClientEntity clientByClientId;
+    private int clientId;
 
     @Tolerate
     public ClientJobDetailsDto(){

@@ -34,12 +34,36 @@ public class ClientService {
         return clientDtos;
     }
 
-    public ClientJobDetailsDto getClientJobDetails(int clientId) {
-        ClientJobDetailsDto clientJobDetailsDto  = new ClientJobDetailsDto();
-        ClientJobDetailsEntity clientJobDetailsEntity =
+    public List<ClientJobDetailsDto> getClientJobDetails(int clientId) {
+
+        List<ClientJobDetailsDto> clientJobDetailsDtos  = new ArrayList<>();
+        List<ClientJobDetailsEntity> clientJobDetailsEntities =
                 clientJobDetailsRepository.findByClientByClientId_ClientId(clientId);
-        BeanUtils.copyProperties(clientJobDetailsEntity, clientJobDetailsDto);
-        return clientJobDetailsDto;
+
+       for(ClientJobDetailsEntity clientJobDetailsEntity: clientJobDetailsEntities) {
+           ClientJobDetailsDto clientJobDetailsDto  = new ClientJobDetailsDto();
+           BeanUtils.copyProperties(clientJobDetailsEntity, clientJobDetailsDto);
+           clientJobDetailsDtos.add(clientJobDetailsDto);
+       }
+
+        return clientJobDetailsDtos;
     }
 
+    public void client(ClientDto clientDto){
+        ClientEntity clientEntity  = new ClientEntity();
+        if(clientDto.getClientId() > 0) {
+            clientEntity = clientRepository.findByClientId(clientDto.getClientId());
+        }
+        BeanUtils.copyProperties(clientDto, clientEntity);
+        clientRepository.save(clientEntity);
+    }
+
+    public void clientJobDetails(ClientJobDetailsDto clientJobDetailsDto) {
+
+        ClientJobDetailsEntity clientJobDetailsEntity  = new ClientJobDetailsEntity()            ;
+        BeanUtils.copyProperties(clientJobDetailsDto,clientJobDetailsEntity);
+        ClientEntity clientEntity = clientRepository.findByClientId(clientJobDetailsDto.getClientId());
+        clientJobDetailsEntity.setClientByClientId(clientEntity);
+        clientJobDetailsRepository.save(clientJobDetailsEntity);
+    }
 }

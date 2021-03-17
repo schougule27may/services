@@ -8,4 +8,6 @@ import java.util.List;
 public interface ClientRepository extends CrudRepository<ClientEntity, Integer> {
 
     List<ClientEntity> findAllByActiveIsTrue();
+
+    ClientEntity findByClientId(int clientId);
 }

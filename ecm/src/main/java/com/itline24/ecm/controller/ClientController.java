@@ -11,10 +11,7 @@ import com.itline24.ecm.repositories.EmployeeRepository;
 import com.itline24.ecm.repositories.EmployeeResumeRepository;
 import com.itline24.ecm.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +28,25 @@ public class ClientController {
     }
 
     @GetMapping (value = "client/{clientId}")
-    public ClientJobDetailsDto getClientJobDetails(@PathVariable(value = "clientId") int clientId){
+    public List<ClientJobDetailsDto> getClientJobDetails(@PathVariable(value = "clientId") int clientId){
         return clientService.getClientJobDetails(clientId);
     }
+
+    @PostMapping(value = "client")
+    public void addClient(@RequestBody ClientDto clientDto
+    ) {
+        clientService.client(clientDto);
+    }
+
+    @PutMapping(value = "client")
+    public void updateClient(@RequestBody ClientDto clientDto
+    ) {
+        clientService.client(clientDto);
+    }
+
+    @PostMapping(value = "clientJobDetails")
+    public void addClientJobDetails(@RequestBody ClientJobDetailsDto clientJobDetailsDto){
+        clientService.clientJobDetails(clientJobDetailsDto);
+    }
+
 }

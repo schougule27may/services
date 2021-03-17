@@ -17,8 +17,6 @@ public class ClientDto {
     private Boolean active;
     private Integer countryCode;
     private Integer mobile;
-    private Timestamp createTime;
-    private Timestamp lastUpdateTime;
     private String address;
     private String nickName;
     private String type;
