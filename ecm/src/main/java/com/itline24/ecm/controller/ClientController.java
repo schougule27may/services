@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 public class ClientController {
 
     @Autowired

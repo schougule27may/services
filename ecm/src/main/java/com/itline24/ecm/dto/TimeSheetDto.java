@@ -2,6 +2,12 @@
 package com.itline24.ecm.dto;
 
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.experimental.Tolerate;
+
+@Builder
+@Data
 public class TimeSheetDto {
 
     private int timeSheetId;
@@ -57,5 +63,10 @@ public class TimeSheetDto {
 
     public void setClientId(Integer clientId) {
         this.clientId = clientId;
+    }
+
+    @Tolerate
+    public TimeSheetDto(){
+
     }
 }

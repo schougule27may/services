@@ -15,7 +15,6 @@ public class EmployeeService {
     public EmployeeEntity employee(EmployeeDto employeeDto) {
         EmployeeEntity employeeEntity = EmployeeEntity.builder().build();
 
-        employeeDto.setActive(false);
         if(employeeDto.getEmployeeId() > 0) {
             employeeEntity =  employeeRepository.findEmployeeEntityByEmployeeId(employeeDto.getEmployeeId());
         }

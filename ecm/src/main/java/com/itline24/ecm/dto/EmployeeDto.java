@@ -2,6 +2,7 @@ package com.itline24.ecm.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -25,5 +26,10 @@ public class EmployeeDto {
     private String autoExp;
     private String createTimeStr;
     private String lastUpdateTimeStr;
+
+    @Tolerate
+    public EmployeeDto(){
+
+    }
 
 }
